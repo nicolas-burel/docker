@@ -75,6 +75,11 @@ RUN curl -o odoo.deb -sSL http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/od
         && apt-get -y install --no-install-recommends ./odoo.deb \
         && rm -rf /var/lib/apt/lists/* odoo.deb
 
+# Install deps for autobackups
+RUN python3 -m pip install paramiko
+RUN python3 -m pip install wheel
+RUN python3 -m pip install pysftp
+
 # Copy entrypoint script and Odoo configuration file
 COPY ./entrypoint.sh /
 COPY ./odoo.conf /etc/odoo/
