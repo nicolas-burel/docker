@@ -78,7 +78,7 @@ RUN curl -o odoo.deb -sSL http://nightly.odoo.com/${ODOO_VERSION}/nightly/deb/od
 # Install deps for autobackups
 RUN python3 -m pip install paramiko
 RUN python3 -m pip install wheel
-RUN python3 -m pip install pysftp
+RUN python3 -m pip install pysftp==0.2.8
 
 # Copy entrypoint script and Odoo configuration file
 COPY ./entrypoint.sh /
